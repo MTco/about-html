@@ -23,18 +23,47 @@ function onTagChange() {
   if (output) {
     document.body.removeChild(output);
   }
-  output = render(value)
-  document.body.appendChild(output);
+  render(value).then(ele => {
+    output = ele;
+    document.body.appendChild(output);
+  });
 }
 onTagChange();
 
 function render(tag) {
-  let tagName = /^[a-z]+/i.exec(tag);
-  clear(endTag);
-  if (!tagName || tagName) {
-    endTag.appendChild(document.createTextNode('/>'));
-  }
-  return html('div', { "id": "output" }, [ tag ]);
+  let p = new Promise(function(resolve, reject) {
+    let tagName = /^[a-z]+/i.exec(tag);
+    clear(endTag);
+    if (!tagName) {
+      endTag.appendChild(document.createTextNode('/>'));
+    }
+    else {
+      let xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+        let json = xhr.responseText;
+        try {
+          json = JSON.parse(json);
+        }
+        catch(e) {
+          return reject();
+        }
+        if (json.requiresEndTag) {
+          endTag.appendChild(document.createTextNode('/><' + tagName + '>'));
+        }
+        else {
+          endTag.appendChild(document.createTextNode('/>'));
+        }
+        resolve(html('div', { "id": "output" }, [
+          html("h1", {}, "<" + tagName + ">"),
+          html("div", {}, json.description),
+        ]));
+      }
+      xhr.open("GET", "tags/" + tagName + ".json");
+      xhr.send();
+    }
+  });
+
+  return p;
 }
 
 function clear(ele) {

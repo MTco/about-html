@@ -1,0 +1,16 @@
+{
+  "requiresEndTag": false,
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": false,
+      "description": "This attribute is required in an anchor defining a target location within a page. A value for name is similar to a value for the id core attribute and should be an alphanumeric identifier unique to the document."
+    },
+    "href": {
+      "type": "string",
+      "required": false,
+      "description": "Indicates the link target, either a URL or a URL fragment."
+    }
+  },
+  "description": "defines a hyperlink, the named target destination for a hyperlink, or both."
+}
