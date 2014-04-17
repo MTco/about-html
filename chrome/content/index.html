@@ -1,0 +1,32 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <script>
+    if (window.location.protocol === "about:") {
+      document.write('<base href="chrome://about-html/content/" />');
+    }
+    </script>
+    <link href="css/html.css" media="all" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <div id ="input">
+      <span id="start-tag">&lt;</span>
+      <input id="tag" type="text" autocomplete="false"  />
+      <span id="end-tag"></span>
+    </div>
+
+    <script>
+    if (/^(?:file|https?):/.test(window.location.protocol)) {
+      document.write('<script src="../../test/test.js"><\/script>');
+    }
+    </script>
+    <script src="js/html.js" type="text/javascript;version=1.8"> defer="true" async="true"></script>
+    <script src="js/index.js" type="text/javascript;version=1.8"> defer="true" async="true"></script>
+  </body>
+</html>

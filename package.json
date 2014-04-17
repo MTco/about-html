@@ -1,0 +1,12 @@
+{
+  "id": "about-html@erikvold.com",
+  "name": "about-html",
+  "fullName": "About HTML",
+  "description": "A HTML lookup and learning tool",
+  "author": "Erik Vold",
+  "version": "0.1",
+  "license": "MPL 2.0",
+    "dependencies": [
+      "pathfinder"
+    ]
+}
