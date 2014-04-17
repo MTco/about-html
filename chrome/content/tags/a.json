@@ -12,5 +12,5 @@
       "description": "Indicates the link target, either a URL or a URL fragment."
     }
   },
-  "description": "defines a hyperlink, the named target destination for a hyperlink, or both."
+  "description": "Defines a hyperlink, the named target destination for a hyperlink, or both."
 }

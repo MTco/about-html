@@ -5,11 +5,26 @@ body {
 
 body, button, #tag {
   font-family: Helvetica;
+  font-size: 20px;
+}
+
+button, #tag, #input {
+  font-family: Helvetica;
   font-size: 50px;
 }
 
 h1 {
   margin: 10px;
+  font-size: 50px;
+  font-weight: normal;
+}
+
+#props {
+  color: grey;
+}
+
+#props > .used {
+  color: black;
 }
 
 #input {
